@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="2061a14c-9597-4654-85c2-da5e376b0e54" name="droidpkg" defaultType="TOOL">
+      <configuration id="fbf7850c-660f-42de-8e11-d91ae4ff8078" name="droidpkg" toolchainName="WSL" />
+    </target>
+  </component>
+</project>

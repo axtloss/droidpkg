@@ -1,0 +1,30 @@
+[
+ {
+  "directory": "/home/axtlos/Projects/droidpkg",
+  "arguments": [
+   "cc",
+   "-g",
+   "-O2",
+   "-Wall",
+   "-pedantic",
+   "-I/usr/include/json-c",
+   "-c",
+   "src/main.c"
+  ],
+  "file": "src/main.c"
+ },
+ {
+  "directory": "/home/axtlos/Projects/droidpkg",
+  "arguments": [
+   "cc",
+   "-g",
+   "-O2",
+   "-Wall",
+   "-pedantic",
+   "-I/usr/include/json-c",
+   "-c",
+   "src/repo.c"
+  ],
+  "file": "src/repo.c"
+ }
+]
