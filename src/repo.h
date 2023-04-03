@@ -36,4 +36,4 @@ const char *find_package_name (char *name);
 
 void find_package_id (char *name, package_key_T *matches);
 
-int repo (void);
+const char *get_value (char *name, char *key);

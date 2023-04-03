@@ -90,10 +90,17 @@ find_package_id (char *name, package_key_T *matches)
     json_object_put (parsed_json);
 }
 
-
-int
-repo(void)
+/* Get a value of a given key */
+const char
+*get_value (char *name, char *key)
 {
-    printf ("repo");
-    return 0;
+    const char *result = NULL;
+    json_object *parsed_json = parse_repo();
+    json_object *packages, *package, *metadata, *value;
+    json_object_object_get_ex (parsed_json, "packages", &packages);
+    json_object_object_get_ex (packages, name, &package);
+    json_object_object_get_ex (package, "metadata", &metadata);
+    json_object_object_get_ex (metadata, key, &value);
+    result = json_object_get_string (value);
+    return result;
 }
