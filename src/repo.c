@@ -20,14 +20,18 @@
 #include <stdio.h>
 #include <json.h>
 #include <string.h>
+#include <sys/stat.h>
 #include "repo.h"
 
 /* Parse the repository json */
 json_object
 *parse_repo (void)
 {
+    struct stat st = {0};
+    stat("index-v2.json", &st);
+    off_t size = st.st_size;
     FILE *fp;
-    char *buffer = malloc (5145416);
+    char *buffer = malloc (size);
     struct json_object *parsed_json;
     fp = fopen ("index-v2.json", "r");
     fread ( buffer, 5145416, 1, fp);

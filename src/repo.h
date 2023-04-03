@@ -1,6 +1,6 @@
 /* repo.h
  *
- * Copyright 2023 Unknown
+ * Copyright 2023 axtlos <axtlos@getcryst.al>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,3 +37,5 @@ const char *find_package_name (char *name);
 void find_package_id (char *name, package_key_T *matches);
 
 const char *get_value (char *name, char *key);
+
+json_object *get_package (char *name);
