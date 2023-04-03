@@ -1,3 +1,3 @@
 # droidpkg
 
-A description of this project.
+Package manager for waydroid using F-Droid repositories
