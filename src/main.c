@@ -1,6 +1,6 @@
 /* main.c
  *
- * Copyright 2023 Unknown
+ * Copyright 2023 axtlos <axtlos@getcryst.al
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 #include <getopt.h>
 #include "main.h"
 #include "repo.h"
+#include "install.h"
 
 int
 main (int argc, char *argv[])
@@ -43,10 +44,11 @@ main (int argc, char *argv[])
         {"name", required_argument, 0, 'n'},
         {"search", required_argument, 0, 's'},
         {"key", required_argument, 0, 'k'},
+        {"install", required_argument, 0, 'I'},
         {0, 0, 0, 0}
     };
 
-    while((opt = getopt_long(argc, argv, "vh:k:i:n:s:", long_options, &option_index)) != -1)
+    while((opt = getopt_long(argc, argv, "vh:k:i:n:s:I:", long_options, &option_index)) != -1)
     {
         switch(opt)
         {
@@ -97,6 +99,10 @@ main (int argc, char *argv[])
                 } else {
                     printf("%s", result);
                 }
+                break;
+            case 'I':
+                printf ("installing %s\n", optarg);
+                install_package (optarg);
                 break;
             case '?':
                 printf ("unknown option: %c\n", optopt);

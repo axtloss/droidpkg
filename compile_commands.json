@@ -8,6 +8,7 @@
    "-Wall",
    "-pedantic",
    "-I/usr/include/json-c",
+   "-lcurl",
    "-c",
    "src/main.c"
   ],
@@ -22,9 +23,25 @@
    "-Wall",
    "-pedantic",
    "-I/usr/include/json-c",
+   "-lcurl",
    "-c",
    "src/repo.c"
   ],
   "file": "src/repo.c"
+ },
+ {
+  "directory": "/home/axtlos/Projects/droidpkg",
+  "arguments": [
+   "cc",
+   "-g",
+   "-O2",
+   "-Wall",
+   "-pedantic",
+   "-I/usr/include/json-c",
+   "-lcurl",
+   "-c",
+   "src/install.c"
+  ],
+  "file": "src/install.c"
  }
 ]

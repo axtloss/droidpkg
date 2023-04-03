@@ -104,3 +104,14 @@ const char
     result = json_object_get_string (value);
     return result;
 }
+
+/* Get the entire object of a given package */
+json_object
+*get_package (char *name)
+{
+    json_object *parsed_json = parse_repo();
+    json_object *packages, *package;
+    json_object_object_get_ex (parsed_json, "packages", &packages);
+    json_object_object_get_ex (packages, name, &package);
+    return package;
+}
