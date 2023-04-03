@@ -21,15 +21,19 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <getopt.h>
-#include <json.h>
 #include "main.h"
 #include "repo.h"
 
 int
-main(int argc, char *argv[]) {
+main (int argc, char *argv[])
+{
     int opt;
     int option_index = 0;
     package_key_T *package_key_start;
+    package_key_T *temp;
+    package_key_T *prev;
+
+    /* Declare available options */
     static struct option long_options[] = {
         {"version", no_argument, 0, 'v'},
         {"help", no_argument, 0, 'h'},
@@ -42,36 +46,38 @@ main(int argc, char *argv[]) {
         switch(opt)
         {
             case 'v':
-                printf("version 1.0");
+                printf ("version 1.0");
                 break;
             case 'h':
-                printf("help");
+                printf ("help");
                 break;
             case 's':
-                printf("searching for %s\n", optarg);
-                package_key_start = (package_key_T*) malloc(sizeof(package_key_T));
+                printf ("searching for %s\n", optarg);
+                package_key_start = (package_key_T*) malloc (sizeof(package_key_T));
                 if (package_key_start == NULL) {
                     printf("malloc failed");
                     exit(1);
                 }
-                package_key_start->key = NULL;
-                package_key_start->next = NULL;
-                find_package_id(optarg, package_key_start);
-                package_key_T *temp = package_key_start;
-                package_key_T *prev = NULL;
-                while (temp->next != NULL || temp->key != NULL) {
-                    printf("%s\n", temp->key);
+                package_key_start -> key = NULL; /* Set to NULL to avoid any errors when the search fails */
+                package_key_start -> next = NULL;
+                find_package_id (optarg, package_key_start);
+                temp = package_key_start;
+                prev = NULL;
+                while (temp->next != NULL /* Loop through the linked list and print the results */
+                       || temp->key != NULL)
+                {
+                    printf ("%s\n", temp->key);
                     prev = temp;
                     temp = temp->next;
-                    free(prev);
+                    free (prev);
                 }
-                free(package_key_start);
+                free (package_key_start);
                 break;
             case '?':
-                printf("unknown option: %c\n", optopt);
+                printf ("unknown option: %c\n", optopt);
                 break;
             default:
-                printf("help");
+                printf ("help");
                 break;
         }
     }

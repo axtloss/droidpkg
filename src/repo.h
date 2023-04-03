@@ -23,21 +23,17 @@
 #ifndef DROIDPKG_REPO_H
 #define DROIDPKG_REPO_H
 
-#endif //DROIDPKG_REPO_H
-
-json_object
-*parse_repo();
-
-const char
-*find_package_name(char *name);
+#endif /* DROIDPKG_REPO_H */
 
 typedef struct package_key {
     char *key;
     struct package_key *next;
 } package_key_T;
 
-void
-find_package_id(char *name, package_key_T *matches);
+json_object *parse_repo (void);
 
-int
-repo();
+const char *find_package_name (char *name);
+
+void find_package_id (char *name, package_key_T *matches);
+
+int repo (void);
