@@ -42,8 +42,7 @@ json_object
 
 /* Find the name of a package by its ID */
 const char
-               *
-find_package_name(char *name)
+* find_package_name(char *name)
 {
     json_object    *parsed_json = parse_repo ();
     json_object    *packages, *package, *metadata, *pkgnames, *pkgname;
@@ -72,11 +71,16 @@ find_package_id(char *name, package_key_T * matches)
         json_object_object_get_ex (pkgnames, "en-US", &pkgname);
         if (json_object_is_type (pkgname, json_type_string))
         {
-            if (strstr (json_object_get_string (pkgname), name) != NULL)
+            if (strstr (json_object_get_string (pkgname), name) != NULL && strlen(key) != 0)
             {
-                temp->key = (char *)malloc (strlen (key));
+                temp->key = (char *)malloc (strlen (key)+1);
+                if (temp->key == NULL)
+                {
+                    printf ("Error allocating memory for package_key_T");
+                    exit (1);
+                }
                 strcpy (temp->key, key);
-                temp->next = (package_key_T *) malloc (sizeof (package_key_T));
+                temp->next = (package_key_T *) malloc (sizeof (package_key_T)+1);
                 if (temp->next == NULL)
                 {
                     printf ("Error allocating memory for package_key_T");
@@ -97,8 +101,7 @@ find_package_id(char *name, package_key_T * matches)
 
 /* Get a value of a given key */
 const char
-               *
-get_value(char *name, char *key)
+* get_value(char *name, char *key)
 {
     const char     *result = NULL;
     json_object    *parsed_json = parse_repo ();

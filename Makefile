@@ -1,4 +1,4 @@
-CFLAGS  += -g -O2 -Wall -pedantic
+CFLAGS  += -g -O0 -Wall -pedantic
 CFLAGS += $(shell pkg-config --cflags json-c) -lcurl
 LDFLAGS += $(shell pkg-config --libs json-c) -lcurl
 

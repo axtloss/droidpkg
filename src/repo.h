@@ -38,3 +38,6 @@ const char     *find_package_name (char *name);
 void            find_package_id (char *name, package_key_T * matches);
 
 const char     *get_value (char *name, char *key);
+
+
+json_object    *get_package (char *name);

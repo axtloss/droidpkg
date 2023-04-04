@@ -22,3 +22,5 @@
 #endif  /* //DROIDPKG_INSTALL_H */
 
 void            fetch_package (char *url);
+
+void            install_package (char *name);

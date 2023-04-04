@@ -75,10 +75,10 @@ main(int argc, char *argv[])
                 find_package_id (optarg, package_key_start);
                 temp = package_key_start;
                 prev = NULL;
-                while (temp->next != NULL   /* Loop through the linked list and
-                                            print the results */
-                       || temp->key != NULL)
+                while (temp->next != NULL) /* Loop through the linked list and print the results */
                 {
+                    if (temp->key == NULL)
+                        break;
                     printf ("%s\n", temp->key);
                     prev = temp;
                     temp = temp->next;
