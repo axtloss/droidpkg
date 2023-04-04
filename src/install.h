@@ -23,4 +23,6 @@
 
 void            fetch_package (char *url);
 
+char            *check_package (char *name, int size);
+
 void            install_package (char *name);

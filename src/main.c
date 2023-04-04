@@ -75,10 +75,14 @@ main(int argc, char *argv[])
                 find_package_id (optarg, package_key_start);
                 temp = package_key_start;
                 prev = NULL;
+                if (temp->key == NULL)
+                {
+                    printf ("No results found\n");
+                    free(package_key_start);
+                    break;
+                }
                 while (temp->next != NULL) /* Loop through the linked list and print the results */
                 {
-                    if (temp->key == NULL)
-                        break;
                     printf ("%s\n", temp->key);
                     prev = temp;
                     temp = temp->next;
@@ -93,7 +97,7 @@ main(int argc, char *argv[])
             case 's':
                 if (search_key == NULL)
                 {
-                    printf ("Please specify a key to search for with -k");
+                    printf ("Please specify a key to search for with -k\n");
                     exit (1);
                 }
                 printf ("searching for %s: %s\n", optarg, search_key);

@@ -34,7 +34,7 @@ json_object
     char           *buffer = malloc (size);
     struct json_object *parsed_json;
     fp = fopen ("index-v2.json", "r");
-    fread (buffer, 5145416, 1, fp);
+    fread (buffer, size, 1, fp);
     fclose (fp);
     parsed_json = json_tokener_parse (buffer);
     return parsed_json;
@@ -71,16 +71,16 @@ find_package_id(char *name, package_key_T * matches)
         json_object_object_get_ex (pkgnames, "en-US", &pkgname);
         if (json_object_is_type (pkgname, json_type_string))
         {
-            if (strstr (json_object_get_string (pkgname), name) != NULL && strlen(key) != 0)
+            if (strstr (json_object_get_string (pkgname), name) != NULL)
             {
-                temp->key = (char *)malloc (strlen (key)+1);
+                temp->key = (char *)malloc (strlen (key) + 1);
                 if (temp->key == NULL)
                 {
                     printf ("Error allocating memory for package_key_T");
                     exit (1);
                 }
                 strcpy (temp->key, key);
-                temp->next = (package_key_T *) malloc (sizeof (package_key_T)+1);
+                temp->next = (package_key_T *) malloc (sizeof (package_key_T) + 1);
                 if (temp->next == NULL)
                 {
                     printf ("Error allocating memory for package_key_T");
