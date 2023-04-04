@@ -20,6 +20,6 @@
 #ifndef DROIDPKG_MAIN_H
 #define DROIDPKG_MAIN_H
 
-#endif /* DROIDPKG_MAIN_H */
+#endif  /* DROIDPKG_MAIN_H */
 
-int main (int argc, char *argv[]);
+int             main (int argc, char *argv[]);

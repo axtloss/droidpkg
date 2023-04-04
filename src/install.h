@@ -19,8 +19,6 @@
 #ifndef DROIDPKG_INSTALL_H
 #define DROIDPKG_INSTALL_H
 
-#endif //DROIDPKG_INSTALL_H
+#endif  /* //DROIDPKG_INSTALL_H */
 
-void fetch_package (char *url);
-
-void install_package (char *name);
+void            fetch_package (char *url);

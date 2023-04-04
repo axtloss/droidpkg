@@ -26,15 +26,15 @@
 #include "install.h"
 
 int
-main (int argc, char *argv[])
+main(int argc, char *argv[])
 {
-    int opt;
-    int option_index = 0;
-    package_key_T *package_key_start;
-    package_key_T *temp;
-    package_key_T *prev;
-    char *search_key = NULL;
-    const char *result = NULL;
+    int             opt;
+    int             option_index = 0;
+    package_key_T  *package_key_start;
+    package_key_T  *temp;
+    package_key_T  *prev;
+    char           *search_key = NULL;
+    const char     *result = NULL;
 
     /* Declare available options */
     static struct option long_options[] = {
@@ -48,9 +48,9 @@ main (int argc, char *argv[])
         {0, 0, 0, 0}
     };
 
-    while((opt = getopt_long(argc, argv, "vh:k:i:n:s:I:", long_options, &option_index)) != -1)
+    while ((opt = getopt_long (argc, argv, "vh:k:i:n:s:I:", long_options, &option_index)) != -1)
     {
-        switch(opt)
+        switch (opt)
         {
             case 'v':
                 printf ("version 1.0");
@@ -63,17 +63,20 @@ main (int argc, char *argv[])
                 break;
             case 'i':
                 printf ("searching for %s\n", optarg);
-                package_key_start = (package_key_T*) malloc (sizeof(package_key_T));
-                if (package_key_start == NULL) {
-                    printf("malloc failed");
-                    exit(1);
+                package_key_start = (package_key_T *) malloc (sizeof (package_key_T));
+                if (package_key_start == NULL)
+                {
+                    printf ("malloc failed");
+                    exit (1);
                 }
-                package_key_start -> key = NULL; /* Set to NULL to avoid any errors when the search fails */
-                package_key_start -> next = NULL;
+                package_key_start->key = NULL;  /* Set to NULL to avoid any
+                                                errors when the search fails */
+                package_key_start->next = NULL;
                 find_package_id (optarg, package_key_start);
                 temp = package_key_start;
                 prev = NULL;
-                while (temp->next != NULL /* Loop through the linked list and print the results */
+                while (temp->next != NULL   /* Loop through the linked list and
+                                            print the results */
                        || temp->key != NULL)
                 {
                     printf ("%s\n", temp->key);
@@ -88,16 +91,20 @@ main (int argc, char *argv[])
                 printf ("%s\n", find_package_name (optarg));
                 break;
             case 's':
-                if (search_key == NULL) {
+                if (search_key == NULL)
+                {
                     printf ("Please specify a key to search for with -k");
-                    exit(1);
+                    exit (1);
                 }
                 printf ("searching for %s: %s\n", optarg, search_key);
                 result = get_value (optarg, search_key);
-                if (result == NULL) {
+                if (result == NULL)
+                {
                     printf ("No results found");
-                } else {
-                    printf("%s", result);
+                }
+                else
+                {
+                    printf ("%s", result);
                 }
                 break;
             case 'I':
